@@ -12,6 +12,8 @@ import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 
 import { AppModule } from './app.module';
+import { ConfigService } from './sahred/services/config.service';
+import { SharedModule } from './shared/shared.module';
 import { setupSwagger } from './swagger';
 
 /*
@@ -38,12 +40,18 @@ async function bootstrap() {
     app.use(compression()); // for less size of response
     app.use(morgan('combined')); // http requests logger
 
+    // getting access to config service
+    const configService = app.select(SharedModule).get(ConfigService);
+    const port = configService.getNumber('PORT');
+
     // setup swagger
-    setupSwagger(app);
+    if (['development', 'staging'].includes(configService.nodeEnv)) {
+        setupSwagger(app);
+    }
 
     app.setGlobalPrefix('api');
-    await app.listen(process.env.PORT);
+    await app.listen(port);
 
-    console.info(`server running on port ${process.env.PORT}`);
+    console.info(`server running on port ${port}`);
 }
 bootstrap();
