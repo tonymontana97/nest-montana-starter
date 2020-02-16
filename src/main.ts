@@ -12,7 +12,7 @@ import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 
 import { AppModule } from './app.module';
-import { ConfigService } from './sahred/services/config.service';
+import { ConfigService } from './shared/services/config.service';
 import { SharedModule } from './shared/shared.module';
 import { setupSwagger } from './swagger';
 
