@@ -15,7 +15,9 @@
         "start:dev": "nest start --watch",
         "start:prod": "node dist/main",
         "test": "jest",
-        "test:e2e": "jest --config ./test/jest-e2e.json"
+        "test:e2e": "jest --config ./test/jest-e2e.json",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint --fix . --ext .ts"
     },
     "dependencies": {
         "@nestjs/common": "^6.11.6",
