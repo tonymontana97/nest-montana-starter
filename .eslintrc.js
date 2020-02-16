@@ -1,10 +1,16 @@
+const path = require('path');
+
 module.exports = {
     env: {
         browser: true,
         es6: true,
         node: true,
     },
-    parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        project: path.resolve(__dirname, './tsconfig.json'),
+        sourceType: 'module',
+    },
     extends: [
         'plugin:import/errors',
         'plugin:import/warnings',
@@ -12,10 +18,12 @@ module.exports = {
         'prettier/@typescript-eslint',
         'plugin:prettier/recommended',
     ],
-    parserOptions: {
-        project: path.resolve(__dirname, './tsconfig.json'),
-        sourceType: 'module',
-    },
+    plugins: [
+        '@typescript-eslint',
+        '@typescript-eslint/tslint',
+        'prettier',
+        'simple-import-sort',
+    ],
     rules: {
         '@typescript-eslint/no-unused-vars': [
             'error',

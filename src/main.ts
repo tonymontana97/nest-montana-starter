@@ -1,15 +1,17 @@
 import 'dotenv/config';
-import * as RateLimit from 'express-rate-limit';
-import * as helmet from 'helmet';
-import * as morgan from 'morgan';
-import * as compression from 'compression';
+
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import * as Express from 'express';
 import {
     ExpressAdapter,
     NestExpressApplication,
 } from '@nestjs/platform-express';
+import * as compression from 'compression';
+import * as Express from 'express';
+import * as RateLimit from 'express-rate-limit';
+import * as helmet from 'helmet';
+import * as morgan from 'morgan';
+
+import { AppModule } from './app.module';
 import { setupSwagger } from './swagger';
 
 /*
