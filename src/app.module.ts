@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 
-import { ModulesModule } from './modules/modules.module';
+import { PublicModule } from './public/public.module';
 import { SharedModule } from './shared/shared.module';
 
 @Module({
-    imports: [SharedModule, ModulesModule],
+    imports: [SharedModule, PublicModule],
     controllers: [],
     providers: [],
 })
